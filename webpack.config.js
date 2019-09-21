@@ -22,17 +22,18 @@ module.exports = {
         use: ["style-loader", "css-loader"]
       },
       {
-        test: /\.(jpe?g|png|gif)$/,
+        test: /\.(jpe?g|png|gif|svg)$/,
         loader: "file-loader",
         options: {
           outputPath: "assets/"
         }
       },
       {
-        test: /\.(eot|svg|ttf|woff2?|otf)$/,
-        loader: "file-loader",
+        test: /\.(woff(2)?|ttf|eot)(\?[a-z0-9=.]+)?$/,
+        loader: "url-loader",
         options: {
-          outputPath: "assets/"
+          outputPath: "fonts",
+          name: "[name].[ext]"
         }
       }
     ]
