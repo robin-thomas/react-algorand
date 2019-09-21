@@ -1,0 +1,17 @@
+.algorand-token {
+  border-radius: 10px;
+  border: 2px solid #ff3547;
+  overflow: hidden;
+  margin-top: 10px;
+}
+
+.algorand-token-header-col {
+  border-bottom-right-radius: 50px;
+  background: #ff3547;
+  text-align: center;
+  color: #fff;
+}
+
+.algorand-token-footer .col {
+  text-align: center;
+}

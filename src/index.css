@@ -1,0 +1,16 @@
+.algorand-container {
+  border: 2px solid #ff3547;
+  background: white;
+  color: black;
+  border-radius: 10px;
+  box-shadow: 0 1px 0 0 #ff3547;
+}
+
+.algorand-container input:focus:not([readonly]) {
+  border-bottom: 1px solid #ff3547 !important;
+  box-shadow: 0 1px 0 0 #ff3547 !important;
+}
+
+.algorand-container input:focus:not([readonly]) + label {
+  color: #ff3547 !important;
+}

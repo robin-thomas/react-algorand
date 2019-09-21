@@ -14,9 +14,11 @@ const Input = props => {
           type="text"
           value={text}
           hint={props.hint}
+          label={props.label}
           onChange={e => setText(e.target.value)}
           disabled={ctx.disabled !== null ? ctx.disabled.text : false}
-          size={props.size ? props.size : "lg"}
+          size={props.size ? props.size : "sm"}
+          icon={props.icon}
         />
       )}
     </DataConsumer>
