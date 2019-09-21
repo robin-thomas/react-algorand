@@ -1,0 +1,11 @@
+{
+  "name": "react-algorand",
+  "version": "1.0.0",
+  "description": "React components that expose creating, signing and sending payment transaction on Algorand blockchain",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Robin Thomas <robinthomas2591@gmail.com>",
+  "license": "MIT"
+}
