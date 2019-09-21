@@ -4,7 +4,7 @@
   "description": "React components that expose creating, signing and sending payment transaction on Algorand blockchain",
   "main": "build/index.js",
   "scripts": {
-    "build": "webpack",
+    "build": "webpack --mode=production",
     "start": "webpack --watch"
   },
   "author": "Robin Thomas <robinthomas2591@gmail.com>",
@@ -25,22 +25,28 @@
     "url": "git+https://github.com/robin-thomas/react-algorand.git"
   },
   "peerDependencies": {
-    "react": "^16.9.0"
-  },
-  "dependencies": {
     "react": "^16.9.0",
-    "webpack": "^4.40.2"
+    "react-dom": "^16.9.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.6.0",
     "@babel/core": "^7.6.0",
     "@babel/preset-env": "^7.6.0",
+    "@babel/preset-react": "^7.0.0",
     "babel-loader": "^8.0.6",
-    "babel-plugin-transform-object-rest-spread": "^6.26.0",
-    "babel-plugin-transform-react-jsx": "^6.24.1",
+    "css-loader": "^3.2.0",
+    "file-loader": "^4.2.0",
     "husky": "^3.0.5",
+    "image-webpack-loader": "^6.0.0",
     "lint-staged": "^9.2.5",
+    "mdbreact": "^4.20.0",
     "prettier": "^1.18.2",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0",
+    "react-svg-loader": "^3.0.3",
+    "style-loader": "^1.0.0",
+    "svg-inline-loader": "^0.8.0",
+    "webpack": "^4.40.2",
     "webpack-cli": "^3.3.9"
   }
 }
