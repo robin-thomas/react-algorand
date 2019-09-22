@@ -14,4 +14,12 @@ const getColorClass = color => {
   }
 };
 
+const getCurrentColor = () => {
+  let color = getComputedStyle(document.documentElement).getPropertyValue(
+    "--algorand-color"
+  );
+  return color;
+};
+
+export { getCurrentColor };
 export default getColorClass;

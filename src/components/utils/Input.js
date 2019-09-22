@@ -2,10 +2,31 @@ import React, { useState } from "react";
 
 import { MDBInput } from "mdbreact";
 
+import { getCurrentColor } from "./Color";
 import { DataConsumer } from "./DataProvider";
 
 const Input = props => {
   const [text, setText] = useState(props.value ? props.value : "");
+
+  const onChange = (target, text) => {
+    setText(text);
+
+    if (props.onChange) {
+      // const color = getCurrentColor();
+
+      const { validate } = props.onChange(text);
+
+      console.log(validate);
+
+      if (validate === false) {
+        target.classList.remove("is-valid");
+        target.classList.add("is-invalid");
+      } else {
+        target.classList.remove("is-invalid");
+        target.classList.add("is-valid");
+      }
+    }
+  };
 
   return (
     <DataConsumer>
@@ -15,7 +36,7 @@ const Input = props => {
           value={text}
           hint={props.hint}
           label={props.label}
-          onChange={e => setText(e.target.value)}
+          onChange={e => onChange(e.target, e.target.value)}
           disabled={ctx.disabled}
           size={props.size ? props.size : "sm"}
           icon={props.icon}
