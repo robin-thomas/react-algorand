@@ -4,6 +4,7 @@
   color: black;
   border-radius: 10px;
   box-shadow: 0 1px 0 0 #ff3547;
+  width: 250px;
 }
 
 .algorand-container input:focus:not([readonly]) {
