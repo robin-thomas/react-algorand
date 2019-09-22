@@ -1,8 +1,9 @@
 import React from "react";
 
-import Container from "./components/Container";
-import Transfer from "./components/transfer";
+import App from "./components/app";
 import DataProvider from "./components/utils/DataProvider";
+
+import getColorClass from "./components/utils/Color";
 
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "bootstrap-css-only/css/bootstrap.min.css";
@@ -11,25 +12,10 @@ import "./index.css";
 
 const Algorand = props => {
   let { color } = props;
-  switch (color) {
-    case "danger":
-    case "primary":
-    case "info":
-    case "warning":
-    case "secondary":
-    case "success":
-    case "dark":
-      break;
-
-    default:
-      color = "danger";
-  }
 
   return (
     <DataProvider>
-      <Container colorClass={color}>
-        <Transfer />
-      </Container>
+      <App colorClass={getColorClass(color)} />
     </DataProvider>
   );
 };

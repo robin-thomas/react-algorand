@@ -2,12 +2,14 @@ import React, { useContext, useEffect } from "react";
 
 import { Container } from "react-bootstrap";
 
-import { DataContext } from "./utils/DataProvider";
+import getComponent from "./Component";
+import { DataContext } from "../utils/DataProvider";
 
-import "./Container.css";
+import "./App.css";
 
-const AlgorandContainer = ({ colorClass, children }) => {
+const App = ({ colorClass }) => {
   const ctx = useContext(DataContext);
+
   useEffect(() => {
     ctx.setColorClass(colorClass);
     document.documentElement.style.setProperty(
@@ -16,7 +18,11 @@ const AlgorandContainer = ({ colorClass, children }) => {
     );
   }, [colorClass]);
 
-  return <Container className="algorand-container">{children}</Container>;
+  return (
+    <Container className="algorand-container">
+      {getComponent(ctx.page)}
+    </Container>
+  );
 };
 
-export default AlgorandContainer;
+export default App;

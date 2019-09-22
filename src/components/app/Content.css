@@ -1,0 +1,25 @@
+.algorand-content {
+  border-radius: 10px;
+  border: 2px solid var(--algorand-color);
+  overflow: hidden;
+}
+
+.algorand-content-header {
+  border-bottom-right-radius: 50px;
+  background: var(--algorand-color);
+  text-align: center;
+  color: #fff;
+}
+
+.algorand-content-close {
+  color: var(--algorand-color);
+  cursor: pointer;
+}
+
+.algorand-content-footer div[class*="col"] {
+  text-align: center;
+}
+
+.algorand-content-footer div[class*="col"]:nth-child(2) {
+  text-decoration: underline;
+}

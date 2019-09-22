@@ -3,9 +3,8 @@ import React from "react";
 import { MDBBtn } from "mdbreact";
 import { Row, Col } from "react-bootstrap";
 
+import { DataConsumer } from "../utils/DataProvider";
 import Input from "../utils/Input";
-
-import "./TransferTo.css";
 
 const TransferTo = props => (
   <div>
@@ -15,8 +14,10 @@ const TransferTo = props => (
       </Col>
     </Row>
     <Row>
-      <Col className="algorand-transferto-footer text-center">
-        <MDBBtn color="danger">Transfer Now</MDBBtn>
+      <Col className="text-center">
+        <DataConsumer>
+          {ctx => <MDBBtn color={ctx.colorClass}>Transfer Now</MDBBtn>}
+        </DataConsumer>
       </Col>
     </Row>
   </div>

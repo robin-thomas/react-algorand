@@ -1,17 +1,3 @@
-.algorand-transferamount {
-  border-radius: 10px;
-  border: 2px solid var(--algorand-color);
-  overflow: hidden;
-  margin-top: 10px;
-}
-
-.algorand-transferamount-header-col {
-  border-bottom-right-radius: 50px;
-  background: var(--algorand-color);
-  text-align: center;
-  color: #fff;
-}
-
 .algorand-transferamount-footer div[class*="col"] {
   text-align: center;
 }

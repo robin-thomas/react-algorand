@@ -6,6 +6,7 @@ const DataProvider = props => {
   const [disabled, setDisabled] = useState(true);
   const [walletConnected, setWalletConnected] = useState(false);
   const [colorClass, setColorClass] = useState(null);
+  const [page, setPage] = useState("home");
 
   return (
     <DataContext.Provider
@@ -15,7 +16,9 @@ const DataProvider = props => {
         walletConnected,
         setWalletConnected,
         colorClass,
-        setColorClass
+        setColorClass,
+        page,
+        setPage
       }}
     >
       {props.children}

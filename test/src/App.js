@@ -7,7 +7,7 @@ import { Row, Col } from "react-bootstrap";
 import Algorand from "react-algorand";
 
 function App() {
-  const [color, setColor] = useState("danger");
+  const [color, setColor] = useState("dark");
 
   const colors = [
     "danger",
