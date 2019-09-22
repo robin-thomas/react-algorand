@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Container, Row, Col } from "react-bootstrap";
+import { Row, Col } from "react-bootstrap";
 
 import Content from "../app/Content";
 import Input from "../utils/Input";
@@ -12,7 +12,7 @@ const TransferAmount = props => (
   <Content header="Transfer">
     <Row className="algorand-transferamount-footer">
       <Col xs="5" md="5" className="align-self-center">
-        <Input hint="0.00" size="lg" />
+        <Input hint="0.00" size="lg" type="number" />
       </Col>
       <Col xs="2" md="2" className="px-0 align-self-center">
         of

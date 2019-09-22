@@ -16,9 +16,10 @@ const Input = props => {
 
       const { validate } = props.onChange(text);
 
-      console.log(validate);
-
-      if (validate === false) {
+      if (validate === undefined) {
+        target.classList.remove("is-valid");
+        target.classList.remove("is-invalid");
+      } else if (validate === false) {
         target.classList.remove("is-valid");
         target.classList.add("is-invalid");
       } else {
@@ -32,7 +33,7 @@ const Input = props => {
     <DataConsumer>
       {ctx => (
         <MDBInput
-          type="text"
+          type={props.type ? props.type : "text"}
           value={text}
           hint={props.hint}
           label={props.label}
@@ -40,6 +41,7 @@ const Input = props => {
           disabled={ctx.disabled}
           size={props.size ? props.size : "sm"}
           icon={props.icon}
+          className={props.cls}
         />
       )}
     </DataConsumer>
