@@ -8,6 +8,11 @@ import { DataConsumer } from "../utils/DataProvider";
 import "./Content.css";
 
 const Content = ({ header, children }) => {
+  const onClick = ctx => {
+    ctx.setPage("home");
+    ctx.setDisabled(true);
+  };
+
   return (
     <Container className="algorand-content">
       <Row>
@@ -21,7 +26,7 @@ const Content = ({ header, children }) => {
                 <MDBIcon
                   icon="times"
                   className="algorand-content-close"
-                  onClick={() => ctx.setPage("home")}
+                  onClick={() => onClick(ctx)}
                 />
               ) : (
                 ""
