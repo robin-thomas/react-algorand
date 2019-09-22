@@ -12,11 +12,10 @@
   color: #fff;
 }
 
-.algorand-transferamount-footer .col {
+.algorand-transferamount-footer div[class*="col"] {
   text-align: center;
 }
 
-.algorand-transferamount-footer .col:nth-child(2) {
-  text-align: center;
+.algorand-transferamount-footer div[class*="col"]:nth-child(2) {
   text-decoration: underline;
 }
