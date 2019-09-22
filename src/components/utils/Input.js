@@ -16,7 +16,7 @@ const Input = props => {
           hint={props.hint}
           label={props.label}
           onChange={e => setText(e.target.value)}
-          disabled={ctx.disabled !== null ? ctx.disabled.text : false}
+          disabled={ctx.disabled}
           size={props.size ? props.size : "sm"}
           icon={props.icon}
         />

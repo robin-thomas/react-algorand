@@ -3,7 +3,7 @@ import React, { useState } from "react";
 const DataContext = React.createContext();
 
 const DataProvider = props => {
-  const [disabled, setDisabled] = useState(null);
+  const [disabled, setDisabled] = useState(true);
   const [walletConnected, setWalletConnected] = useState(false);
   const [colorClass, setColorClass] = useState(null);
 
