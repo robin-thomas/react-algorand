@@ -1,0 +1,17 @@
+.algorand-container {
+  background: white;
+  color: black;
+  border-radius: 10px;
+  width: 250px !important;
+  border: 2px solid var(--algorand-color);
+  box-shadow: 0 1px 0 0 var(--algorand-color);
+}
+
+.algorand-container input:focus:not([readonly]) {
+  border-bottom: 1px solid var(--algorand-color) !important;
+  box-shadow: 0 1px 0 0 var(--algorand-color) !important;
+}
+
+.algorand-container input:focus:not([readonly]) + label {
+  color: var(--algorand-color) !important;
+}

@@ -1,17 +1,10 @@
-.algorand-container {
-  border: 2px solid #ff3547;
-  background: white;
-  color: black;
-  border-radius: 10px;
-  box-shadow: 0 1px 0 0 #ff3547;
-  width: 250px;
-}
-
-.algorand-container input:focus:not([readonly]) {
-  border-bottom: 1px solid #ff3547 !important;
-  box-shadow: 0 1px 0 0 #ff3547 !important;
-}
-
-.algorand-container input:focus:not([readonly]) + label {
-  color: #ff3547 !important;
+:root {
+  --algorand-color-primary: #4285f4;
+  --algorand-color-danger: #ff3547;
+  --algorand-color-dark: #212121;
+  --algorand-color-warning: #fb3;
+  --algorand-color-success: #00c851;
+  --algorand-color-secondary: #a6c;
+  --algorand-color-info: #33b5e5;
+  --algorand-color: var(--algorand-color-danger);
 }

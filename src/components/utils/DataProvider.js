@@ -4,12 +4,18 @@ const DataContext = React.createContext();
 
 const DataProvider = props => {
   const [disabled, setDisabled] = useState(null);
+  const [walletConnected, setWalletConnected] = useState(false);
+  const [colorClass, setColorClass] = useState(null);
 
   return (
     <DataContext.Provider
       value={{
         disabled,
-        setDisabled
+        setDisabled,
+        walletConnected,
+        setWalletConnected,
+        colorClass,
+        setColorClass
       }}
     >
       {props.children}
@@ -20,4 +26,5 @@ const DataProvider = props => {
 const DataConsumer = DataContext.Consumer;
 
 export { DataConsumer };
+export { DataContext };
 export default DataProvider;
