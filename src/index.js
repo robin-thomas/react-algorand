@@ -11,11 +11,15 @@ import "mdbreact/dist/css/mdb.css";
 import "./index.css";
 
 const Algorand = props => {
-  let { color } = props;
+  let { color, apiKey, apiServer } = props;
 
   return (
     <DataProvider>
-      <App colorClass={getColorClass(color)} />
+      <App
+        colorClass={getColorClass(color)}
+        apiKey={apiKey}
+        apiServer={apiServer}
+      />
     </DataProvider>
   );
 };

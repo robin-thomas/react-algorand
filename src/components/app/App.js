@@ -7,8 +7,15 @@ import { DataContext } from "../utils/DataProvider";
 
 import "./App.css";
 
-const App = ({ colorClass }) => {
+const App = ({ colorClass, apiKey, apiServer }) => {
   const ctx = useContext(DataContext);
+
+  useEffect(() => {
+    ctx.setApi({
+      key: apiKey,
+      server: apiServer
+    });
+  }, []);
 
   useEffect(() => {
     ctx.setColorClass(colorClass);
