@@ -1,0 +1,9 @@
+{
+  "algorand": {
+    "api": {
+      "host": "http://hackathon.algodev.network",
+      "port": 9100,
+      "key": "ef920e2e7e002953f4b29a8af720efe8e4ecc75ff102b165e0472834b25832c1"
+    }
+  }
+}

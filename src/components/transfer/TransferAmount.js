@@ -12,12 +12,12 @@ const TransferAmount = props => (
   <Content header="Transfer">
     <Row className="algorand-transferamount-footer">
       <Col xs="5" md="5" className="align-self-center">
-        <Input hint="0.00" size="lg" type="number" />
+        <Input hint="0.00" type="number" />
       </Col>
       <Col xs="2" md="2" className="px-0 align-self-center">
         of
       </Col>
-      <Col xs="5" md="5" className="align-self-center">
+      <Col xs="5" md="5" className="align-self-center pl-0">
         <img src={Logo} alt="Logo" />
       </Col>
     </Row>

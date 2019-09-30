@@ -8,6 +8,7 @@ const DataProvider = props => {
   const [colorClass, setColorClass] = useState(null);
   const [page, setPage] = useState("home");
   const [api, setApi] = useState(null);
+  const [wallet, setWallet] = useState(null);
 
   return (
     <DataContext.Provider
@@ -21,7 +22,9 @@ const DataProvider = props => {
         page,
         setPage,
         api,
-        setApi
+        setApi,
+        wallet,
+        setWallet
       }}
     >
       {props.children}
