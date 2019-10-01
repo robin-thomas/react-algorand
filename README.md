@@ -1,6 +1,6 @@
 # React-Algorand
 
-![](https://img.shields.io/badge/nodejs-8.10-blue.svg) [![License](https://img.shields.io/badge/license-MIT-green.svg)](https://opensource.org/licenses/MIT)
+![](https://img.shields.io/badge/nodejs-12.4-blue.svg) [![License](https://img.shields.io/badge/license-MIT-green.svg)](https://opensource.org/licenses/MIT)
 
 # Demo link
 
@@ -8,19 +8,33 @@ https://test.robinthomas2591.now.sh/
 
 # Table of Contents
 
-1. [What is it?](#what-is-it)
-2. [Install](#install)
+1. [Install](#install)
+2. [Usage](#usage)
 3. [Features](#features)
-
-# What is it?
-
-**React-algorand** exposes React components which can be used to compliment Algorand blockchain.
 
 # Install
 
 ```sh
 $ npm install react-algorand
 ```
+
+# Usage
+
+```
+import React from "react";
+
+import Algorand from "react-algorand";
+
+function App() {
+  return (
+    <Algorand color="primary" />
+  );
+}
+
+export default App;
+```
+
+**color** can be one among `danger`, `primary`, `dark`, `warning`, `success`, `secondary`, or `info`. If none is provided, it'll be defaulted to `dark`
 
 # Features
 
@@ -29,5 +43,5 @@ $ npm install react-algorand
 - Send payment transaction to another Algorand account.
 - See the account balance before making the transaction.
 - It will wait until the transaction is mined and then link to Algorand explorer.
-- Support different Algorand networks - `mainnet`, `testnet`.
+- Support different Algorand networks - `mainnet`, and `testnet`.
 - Choose between different themes - `danger`, `primary`, `dark`, `warning`, `success`, `secondary`, `info`.
