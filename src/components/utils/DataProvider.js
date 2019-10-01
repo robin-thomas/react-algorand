@@ -13,9 +13,7 @@ const DataProvider = props => {
     amount: false,
     toAddress: false
   });
-  const [txUrl, setTxUrl] = useState(
-    "https://testnet.algoexplorer.io/tx/{txId}"
-  );
+  const [txUrl, setTxUrl] = useState(null);
 
   return (
     <DataContext.Provider

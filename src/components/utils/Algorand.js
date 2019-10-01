@@ -43,7 +43,6 @@ const Algorand = {
   },
 
   getAccount: async (ctx, address) => {
-    console.log(Algorand.getClient(ctx));
     return await Algorand.getClient(ctx).accountInformation(address);
   },
 
@@ -57,14 +56,24 @@ const Algorand = {
     let block = await Algorand.getClient(ctx).block(lastRound);
 
     tx.firstRound = lastRound;
-    (tx.lastRound = lastRound + parseInt(1000)), console.log(tx);
-    console.log(ctx.wallet.sk);
+    tx.lastRound = lastRound + parseInt(1000);
 
     const signedTx = algosdk.signTransaction(tx, ctx.wallet.sk);
     const txResponse = await Algorand.getClient(ctx).sendRawTransaction(
       signedTx.blob
     );
     return txResponse.txId;
+  },
+
+  checkTxStatus: async (ctx, txId) => {
+    try {
+      const response = await Algorand.getClient(
+        ctx
+      ).pendingTransactionInformation(txId);
+      return response;
+    } catch (err) {
+      return await Algorand.checkTxStatus(ctx, txId);
+    }
   }
 };
 

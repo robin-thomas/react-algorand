@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useContext } from "react";
 
 import { MDBBtn } from "mdbreact";
 import { Row, Col, Spinner } from "react-bootstrap";
@@ -7,14 +7,28 @@ import Content from "../app/Content";
 import TransferAmount from "./TransferAmount";
 import TransferTo from "./TransferTo";
 
-import { DataConsumer } from "../utils/DataProvider";
+import Algorand from "../utils/Algorand";
+import { DataConsumer, DataContext } from "../utils/DataProvider";
 
 import "./TransferAnother.css";
 
 const Transfer = () => {
-  const [disabled, setDisabled] = useState(true);
+  const [success, setSuccess] = useState(false);
+
+  const ctx = useContext(DataContext);
+
+  useEffect(() => {
+    const checkTxStatus = async () => {
+      const txId = ctx.txUrl.substr(ctx.txUrl.lastIndexOf("/") + 1);
+      await Algorand.checkTxStatus(ctx, txId);
+      setSuccess(true);
+    };
+
+    checkTxStatus();
+  }, []);
 
   const onClick = ctx => {
+    setSuccess(false);
     ctx.setTxUrl(null);
   };
 
@@ -28,12 +42,16 @@ const Transfer = () => {
               md="12"
               className="algorand-transferanother-spinner align-self-center text-center"
             >
-              <Spinner
-                animation={`${disabled ? "border" : null}`}
-                size="lg"
-                role="status"
-                variant={ctx.colorClass}
-              />
+              {success ? (
+                <i className="fas fa-check"></i>
+              ) : (
+                <Spinner
+                  animation="border"
+                  size="lg"
+                  role="status"
+                  variant={ctx.colorClass}
+                />
+              )}
             </Col>
             <Col xs="12" md="12" className="align-self-center px-0">
               <a
@@ -41,7 +59,7 @@ const Transfer = () => {
                 href={ctx.txUrl}
                 target="_blank"
               >
-                {ctx.txUrl}
+                {`${ctx.txUrl.substr(0, 50)}...`}
               </a>
             </Col>
           </Content>

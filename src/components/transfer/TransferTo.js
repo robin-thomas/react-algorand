@@ -46,7 +46,6 @@ const TransferTo = props => {
     });
 
     const url = config.algorand.explorer[ctx.network].replace("{txId}", txId);
-    console.log(url);
     ctx.setTxUrl(url);
 
     // Reset validation object.
