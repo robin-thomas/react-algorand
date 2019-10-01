@@ -33,7 +33,9 @@ const TransferTo = props => {
     return { validate };
   };
 
-  const onSubmit = e => {};
+  const transfer = e => {
+    console.log("hello");
+  };
 
   return (
     <div>
@@ -71,11 +73,7 @@ const TransferTo = props => {
       </Row>
       <Row>
         <Col className="align-self-center">
-          <form
-            className="algorand-transferto-form"
-            onSubmit={onSubmit}
-            noValidate
-          >
+          <form className="algorand-transferto-form" noValidate>
             <Input
               label="To Address:"
               onChange={onChangeAddress}
@@ -87,7 +85,11 @@ const TransferTo = props => {
       <Row>
         <Col className="text-center">
           <DataConsumer>
-            {ctx => <MDBBtn color={ctx.colorClass}>Transfer Now</MDBBtn>}
+            {ctx => (
+              <MDBBtn color={ctx.colorClass} onClick={transfer} disabled>
+                Transfer Now
+              </MDBBtn>
+            )}
           </DataConsumer>
         </Col>
       </Row>

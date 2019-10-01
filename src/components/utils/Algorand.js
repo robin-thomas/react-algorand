@@ -43,7 +43,12 @@ const Algorand = {
   },
 
   getAccount: async (ctx, address) => {
+    console.log(Algorand.getClient(ctx));
     return await Algorand.getClient(ctx).accountInformation(address);
+  },
+
+  getTransactionParams: async ctx => {
+    return await Algorand.getClient(ctx).getTransactionParams();
   }
 };
 
