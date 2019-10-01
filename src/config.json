@@ -11,6 +11,10 @@
         "port": "",
         "key": "rvsGLX3XD57HNkFVhXUkW5Epad2dlh3U3TzUPkvs"
       }
+    },
+    "explorer": {
+      "mainnet": "https://algoexplorer.io/tx/{txId}",
+      "testnet": "https://testnet.algoexplorer.io/tx/{txId}"
     }
   }
 }

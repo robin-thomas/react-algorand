@@ -1,5 +1,7 @@
+.git
 src
 test
 .babelrc
-webpack.config.js
 .gitignore
+now.json
+webpack.config.js

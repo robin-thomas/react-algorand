@@ -5,3 +5,17 @@
 .algorand-transferamount-footer div[class*="col"]:nth-child(2) {
   text-decoration: underline;
 }
+
+a.algorand-transferanother-url {
+  text-decoration: underline;
+  color: black;
+  word-break: break-all;
+  font-size: 18px;
+  display: inline-block;
+}
+
+a.algorand-transferanother-url:hover {
+  text-decoration: underline;
+  color: black;
+  word-break: break-all;
+}

@@ -47,8 +47,24 @@ const Algorand = {
     return await Algorand.getClient(ctx).accountInformation(address);
   },
 
-  getTransactionParams: async ctx => {
-    return await Algorand.getClient(ctx).getTransactionParams();
+  createTransaction: async (ctx, { to, amount }) => {
+    let tx = await Algorand.getClient(ctx).getTransactionParams();
+    tx.to = to;
+    tx.amount = Number(amount) * Math.pow(10, 6); // convert to micro-algos.
+    tx.genesisHash = tx.genesishashb64;
+
+    let lastRound = (await Algorand.getClient(ctx).status()).lastRound;
+    let block = await Algorand.getClient(ctx).block(lastRound);
+
+    tx.firstRound = lastRound;
+    (tx.lastRound = lastRound + parseInt(1000)), console.log(tx);
+    console.log(ctx.wallet.sk);
+
+    const signedTx = algosdk.signTransaction(tx, ctx.wallet.sk);
+    const txResponse = await Algorand.getClient(ctx).sendRawTransaction(
+      signedTx.blob
+    );
+    return txResponse.txId;
   }
 };
 

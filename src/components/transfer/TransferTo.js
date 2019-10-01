@@ -32,13 +32,29 @@ const TransferTo = props => {
 
     const validate = Algorand.isValidAddress(address);
     ctx.setValidation(validation => {
-      return { ...validation, toAddress: validate };
+      return { ...validation, toAddress: validate, toAddressValue: address };
     });
     return { validate };
   };
 
-  const transfer = e => {
-    console.log("hello");
+  const transfer = async e => {
+    ctx.setDisabled(true);
+
+    let txId = await Algorand.createTransaction(ctx, {
+      to: ctx.validation.toAddressValue,
+      amount: ctx.validation.amountValue
+    });
+
+    const url = config.algorand.explorer[ctx.network].replace("{txId}", txId);
+    console.log(url);
+    ctx.setTxUrl(url);
+
+    // Reset validation object.
+    ctx.setValidation({
+      amount: false,
+      toAddress: false
+    });
+    ctx.setDisabled(false);
   };
 
   return (
@@ -58,13 +74,14 @@ const TransferTo = props => {
         </Col>
       </Row>
       <Row>
-        <Col>
+        <Col className="algorand-transferto-select">
           <DataConsumer>
             {ctx => (
               <Form.Control
                 as="select"
                 size="sm"
                 value={ctx.network}
+                disabled={ctx.disabled}
                 onChange={e => ctx.setNetwork(e.target.value)}
               >
                 {networks.map((network, index) => (
@@ -95,7 +112,11 @@ const TransferTo = props => {
               <MDBBtn
                 color={ctx.colorClass}
                 onClick={transfer}
-                disabled={!ctx.validation.amount || !ctx.validation.toAddress}
+                disabled={
+                  ctx.disabled ||
+                  !ctx.validation.amount ||
+                  !ctx.validation.toAddress
+                }
               >
                 Transfer Now
               </MDBBtn>

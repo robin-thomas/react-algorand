@@ -15,6 +15,10 @@ const Content = ({ header, children }) => {
       ctx.setWallet(null);
       ctx.setAccount(null);
       ctx.setNetwork("testnet");
+      ctx.setValidation({
+        amount: false,
+        toAddress: false
+      });
     }
   };
 

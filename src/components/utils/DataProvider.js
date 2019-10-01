@@ -13,6 +13,9 @@ const DataProvider = props => {
     amount: false,
     toAddress: false
   });
+  const [txUrl, setTxUrl] = useState(
+    "https://testnet.algoexplorer.io/tx/{txId}"
+  );
 
   return (
     <DataContext.Provider
@@ -30,7 +33,9 @@ const DataProvider = props => {
         network,
         setNetwork,
         validation,
-        setValidation
+        setValidation,
+        txUrl,
+        setTxUrl
       }}
     >
       {props.children}

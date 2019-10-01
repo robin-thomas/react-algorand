@@ -7,8 +7,18 @@ p.algorand-transferto-balance-p {
   font-size: 1rem;
   margin-bottom: 0px;
   margin-top: 1em;
+  font-weight: 400;
 }
 
 form.algorand-transferto-form .md-form {
-  margin-top: 10px;
+  margin-top: 15px;
+}
+
+.algorand-transferto-select .form-control {
+  border: 2px solid var(--algorand-color) !important;
+}
+
+.algorand-transferto-select .form-control:focus {
+  box-shadow: none !important;
+  border: 2px solid var(--algorand-color) !important;
 }
