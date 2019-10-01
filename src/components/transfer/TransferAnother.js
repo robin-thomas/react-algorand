@@ -4,8 +4,6 @@ import { MDBBtn } from "mdbreact";
 import { Row, Col, Spinner } from "react-bootstrap";
 
 import Content from "../app/Content";
-import TransferAmount from "./TransferAmount";
-import TransferTo from "./TransferTo";
 
 import Algorand from "../utils/Algorand";
 import { DataConsumer, DataContext } from "../utils/DataProvider";
@@ -58,6 +56,7 @@ const Transfer = () => {
                 className="algorand-transferanother-url"
                 href={ctx.txUrl}
                 target="_blank"
+                rel="noopener noreferrer"
               >
                 {`${ctx.txUrl.substr(0, 50)}...`}
               </a>

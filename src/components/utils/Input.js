@@ -2,7 +2,6 @@ import React, { useState } from "react";
 
 import { MDBInput } from "mdbreact";
 
-import { getCurrentColor } from "./Color";
 import { DataConsumer } from "./DataProvider";
 
 const Input = props => {

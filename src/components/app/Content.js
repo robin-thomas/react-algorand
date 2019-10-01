@@ -1,3 +1,6 @@
+/*global confirm*/
+/*eslint no-restricted-globals: ["off", "confirm"]*/
+
 import React from "react";
 
 import { MDBIcon } from "mdbreact";
@@ -8,17 +11,23 @@ import { DataConsumer } from "../utils/DataProvider";
 import "./Content.css";
 
 const Content = ({ header, children }) => {
+  const reset = ctx => {
+    ctx.setDisabled(true);
+    ctx.setPage("home");
+    ctx.setWallet(null);
+    ctx.setAccount(null);
+    ctx.setNetwork("testnet");
+    ctx.setValidation({
+      amount: false,
+      toAddress: false
+    });
+  };
+
   const logout = ctx => {
-    if (confirm("Are you sure you want to logout?")) {
-      ctx.setDisabled(true);
-      ctx.setPage("home");
-      ctx.setWallet(null);
-      ctx.setAccount(null);
-      ctx.setNetwork("testnet");
-      ctx.setValidation({
-        amount: false,
-        toAddress: false
-      });
+    if (ctx.page === "login") {
+      reset(ctx);
+    } else if (confirm("Are you sure you want to logout?")) {
+      reset(ctx);
     }
   };
 

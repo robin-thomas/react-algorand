@@ -27,6 +27,7 @@ $ npm install react-algorand
 - Login using Algorand wallet (wallet file is simply a text file containing the mnemonic).
 - Create a new Algorand account and the wallet file will be downloaded automatically.
 - Send payment transaction to another Algorand account.
-- Wait until the transaction is mined and then link to Algorand explorer.
+- See the account balance before making the transaction.
+- It will wait until the transaction is mined and then link to Algorand explorer.
 - Support different Algorand networks - `mainnet`, `testnet`.
 - Choose between different themes - `danger`, `primary`, `dark`, `warning`, `success`, `secondary`, `info`.

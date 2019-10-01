@@ -53,7 +53,6 @@ const Algorand = {
     tx.genesisHash = tx.genesishashb64;
 
     let lastRound = (await Algorand.getClient(ctx).status()).lastRound;
-    let block = await Algorand.getClient(ctx).block(lastRound);
 
     tx.firstRound = lastRound;
     tx.lastRound = lastRound + parseInt(1000);

@@ -4,7 +4,6 @@ import { MDBBtn } from "mdbreact";
 import { Row, Col } from "react-bootstrap";
 
 import { DataConsumer } from "../utils/DataProvider";
-import Input from "../utils/Input";
 
 const Wallet = props => {
   const onClick = ctx => {

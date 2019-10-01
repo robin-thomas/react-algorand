@@ -5,7 +5,6 @@ import { Row, Col } from "react-bootstrap";
 
 import Content from "../app/Content";
 import { DataConsumer } from "../utils/DataProvider";
-import Input from "../utils/Input";
 import EmptyRow from "../utils/EmptyRow";
 
 import Algorand from "../utils/Algorand";
