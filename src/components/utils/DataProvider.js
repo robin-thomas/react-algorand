@@ -9,6 +9,10 @@ const DataProvider = props => {
   const [wallet, setWallet] = useState(null);
   const [account, setAccount] = useState(null);
   const [network, setNetwork] = useState("testnet");
+  const [validation, setValidation] = useState({
+    amount: false,
+    toAddress: false
+  });
 
   return (
     <DataContext.Provider
@@ -24,7 +28,9 @@ const DataProvider = props => {
         account,
         setAccount,
         network,
-        setNetwork
+        setNetwork,
+        validation,
+        setValidation
       }}
     >
       {props.children}

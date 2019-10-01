@@ -6,6 +6,7 @@ import { Row, Col, Form } from "react-bootstrap";
 import Algorand from "../utils/Algorand";
 import { DataConsumer, DataContext } from "../utils/DataProvider";
 import Input from "../utils/Input";
+import Logo from "../../assets/images/logo.png";
 
 import * as config from "../../config.json";
 
@@ -30,6 +31,9 @@ const TransferTo = props => {
     }
 
     const validate = Algorand.isValidAddress(address);
+    ctx.setValidation(validation => {
+      return { ...validation, toAddress: validate };
+    });
     return { validate };
   };
 
@@ -46,6 +50,8 @@ const TransferTo = props => {
               <p className="algorand-transferto-balance-p">
                 Balance:{" "}
                 {ctx.account ? ctx.account.amount / Math.pow(10, 6) : "0.00"}
+                &nbsp;
+                <img src={Logo} alt="Logo" width="12px" height="12px" />
               </p>
             )}
           </DataConsumer>
@@ -86,7 +92,11 @@ const TransferTo = props => {
         <Col className="text-center">
           <DataConsumer>
             {ctx => (
-              <MDBBtn color={ctx.colorClass} onClick={transfer} disabled>
+              <MDBBtn
+                color={ctx.colorClass}
+                onClick={transfer}
+                disabled={!ctx.validation.amount || !ctx.validation.toAddress}
+              >
                 Transfer Now
               </MDBBtn>
             )}
