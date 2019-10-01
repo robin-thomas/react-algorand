@@ -1,5 +1,0 @@
-{
-  "version": 2,
-  "name": "react-algorand",
-  "builds": [{ "src": "test/package.json", "use": "@now/static-build" }]
-}
