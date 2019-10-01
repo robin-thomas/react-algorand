@@ -8,9 +8,14 @@ import { DataConsumer } from "../utils/DataProvider";
 import "./Content.css";
 
 const Content = ({ header, children }) => {
-  const onClick = ctx => {
-    ctx.setPage("home");
-    ctx.setDisabled(true);
+  const logout = ctx => {
+    if (confirm("Are you sure you want to logout?")) {
+      ctx.setDisabled(true);
+      ctx.setPage("home");
+      ctx.setWallet(null);
+      ctx.setAccount(null);
+      ctx.setNetwork("testnet");
+    }
   };
 
   return (
@@ -26,7 +31,7 @@ const Content = ({ header, children }) => {
                 <MDBIcon
                   icon="times"
                   className="algorand-content-close"
-                  onClick={() => onClick(ctx)}
+                  onClick={() => logout(ctx)}
                 />
               ) : (
                 ""

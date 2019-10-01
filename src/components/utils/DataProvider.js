@@ -4,27 +4,27 @@ const DataContext = React.createContext();
 
 const DataProvider = props => {
   const [disabled, setDisabled] = useState(true);
-  const [walletConnected, setWalletConnected] = useState(false);
   const [colorClass, setColorClass] = useState(null);
   const [page, setPage] = useState("home");
-  const [api, setApi] = useState(null);
   const [wallet, setWallet] = useState(null);
+  const [account, setAccount] = useState(null);
+  const [network, setNetwork] = useState("testnet");
 
   return (
     <DataContext.Provider
       value={{
         disabled,
         setDisabled,
-        walletConnected,
-        setWalletConnected,
         colorClass,
         setColorClass,
         page,
         setPage,
-        api,
-        setApi,
         wallet,
-        setWallet
+        setWallet,
+        account,
+        setAccount,
+        network,
+        setNetwork
       }}
     >
       {props.children}

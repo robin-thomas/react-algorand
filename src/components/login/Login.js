@@ -30,7 +30,7 @@ const Home = props => {
           const wallet = Algorand.getWallet(evt.target.result);
           ctx.setWallet(wallet);
           ctx.setPage("transfer");
-          Algorand.getAccount(wallet.address).then(console.log);
+          Algorand.getAccount(ctx, wallet.address).then(ctx.setAccount);
 
           document.getElementById("root").removeChild(file);
         } catch (err) {

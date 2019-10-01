@@ -2,3 +2,13 @@
   padding-right: 30px !important;
   box-sizing: border-box !important;
 }
+
+p.algorand-transferto-balance-p {
+  font-size: 1rem;
+  margin-bottom: 0px;
+  margin-top: 1em;
+}
+
+form.algorand-transferto-form .md-form {
+  margin-top: 10px;
+}
