@@ -7,6 +7,7 @@ import Algorand from "../utils/Algorand";
 import { DataConsumer, DataContext } from "../utils/DataProvider";
 import Input from "../utils/Input";
 import Logo from "../../assets/images/logo.png";
+import ScheduleDate from "./ScheduleDate";
 
 import * as config from "../../config.json";
 
@@ -91,6 +92,11 @@ const TransferTo = props => {
               </Form.Control>
             )}
           </DataConsumer>
+        </Col>
+      </Row>
+      <Row>
+        <Col className="align-self-center">
+          <ScheduleDate />
         </Col>
       </Row>
       <Row>

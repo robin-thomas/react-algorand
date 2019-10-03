@@ -14,6 +14,7 @@ const DataProvider = props => {
     toAddress: false
   });
   const [txUrl, setTxUrl] = useState(null);
+  const [txScheduleDate, setTxScheduleDate] = useState(new Date());
 
   return (
     <DataContext.Provider
@@ -33,7 +34,9 @@ const DataProvider = props => {
         validation,
         setValidation,
         txUrl,
-        setTxUrl
+        setTxUrl,
+        txScheduleDate,
+        setTxScheduleDate
       }}
     >
       {props.children}
