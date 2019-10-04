@@ -13,7 +13,7 @@ const DataProvider = props => {
     amount: false,
     toAddress: false
   });
-  const [txUrl, setTxUrl] = useState(null);
+  const [tx, setTx] = useState(null);
   const [txScheduleDate, setTxScheduleDate] = useState(new Date());
 
   return (
@@ -33,8 +33,8 @@ const DataProvider = props => {
         setNetwork,
         validation,
         setValidation,
-        txUrl,
-        setTxUrl,
+        tx,
+        setTx,
         txScheduleDate,
         setTxScheduleDate
       }}

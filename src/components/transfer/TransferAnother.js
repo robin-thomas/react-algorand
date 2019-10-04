@@ -8,26 +8,35 @@ import Content from "../app/Content";
 import Algorand from "../utils/Algorand";
 import { DataConsumer, DataContext } from "../utils/DataProvider";
 
+import * as config from "../../config.json";
+
 import "./TransferAnother.css";
 
 const Transfer = () => {
-  const [success, setSuccess] = useState(false);
+  const [url, setUrl] = useState(null);
 
   const ctx = useContext(DataContext);
 
   useEffect(() => {
     const checkTxStatus = async () => {
-      const txId = ctx.txUrl.substr(ctx.txUrl.lastIndexOf("/") + 1);
-      await Algorand.checkTxStatus(ctx, txId);
-      setSuccess(true);
+      try {
+        const txId = await Algorand.sendTransaction(ctx, ctx.tx);
+        const url = config.algorand.explorer[ctx.network].replace(
+          "{txId}",
+          txId
+        );
+        setUrl(url);
+      } catch (err) {
+        alert(err.message);
+      }
     };
 
     checkTxStatus();
   }, []);
 
   const onClick = ctx => {
-    setSuccess(false);
-    ctx.setTxUrl(null);
+    setUrl(null);
+    ctx.setTx(null);
   };
 
   return (
@@ -40,7 +49,7 @@ const Transfer = () => {
               md="12"
               className="algorand-transferanother-spinner align-self-center text-center"
             >
-              {success ? (
+              {url ? (
                 <i className="fas fa-check"></i>
               ) : (
                 <Spinner
@@ -52,31 +61,37 @@ const Transfer = () => {
               )}
             </Col>
             <Col xs="12" md="12" className="align-self-center px-0">
-              <a
-                className="algorand-transferanother-url"
-                href={ctx.txUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                {`${ctx.txUrl.substr(0, 50)}...`}
-              </a>
+              {url ? (
+                <a
+                  className="algorand-transferanother-url"
+                  href={url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {`${url.substr(0, 50)}...`}
+                </a>
+              ) : (
+                "Please dont close your browser"
+              )}
             </Col>
           </Content>
         )}
       </DataConsumer>
-      <div>
-        <Row>
-          <Col className="text-center">
-            <DataConsumer>
-              {ctx => (
-                <MDBBtn color={ctx.colorClass} onClick={() => onClick(ctx)}>
-                  Another?
-                </MDBBtn>
-              )}
-            </DataConsumer>
-          </Col>
-        </Row>
-      </div>
+      {url ? (
+        <div>
+          <Row>
+            <Col className="text-center">
+              <DataConsumer>
+                {ctx => (
+                  <MDBBtn color={ctx.colorClass} onClick={() => onClick(ctx)}>
+                    Another?
+                  </MDBBtn>
+                )}
+              </DataConsumer>
+            </Col>
+          </Row>
+        </div>
+      ) : null}
     </div>
   );
 };

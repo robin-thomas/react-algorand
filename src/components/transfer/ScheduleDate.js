@@ -6,13 +6,14 @@ import { DataConsumer } from "../utils/DataProvider";
 
 import "react-datepicker/dist/react-datepicker.min.css";
 
-const Calendar = forwardRef(({ isActive, date, onClick }, ref) => (
+const Calendar = forwardRef(({ isActive, date, disabled, onClick }, ref) => (
   <div ref={ref} className="custom-control custom-switch" onClick={onClick}>
     <input
       type="checkbox"
       className="custom-control-input"
       checked={isActive}
       onChange={() => console.log("")}
+      disabled={disabled}
     />
     <label
       className="algorand-transferto-schedule-label custom-control-label"
@@ -40,7 +41,11 @@ const ScheduleDate = () => {
           minDate={new Date()}
           onClickOutside={() => setIsActive(false)}
           customInput={
-            <Calendar isActive={isActive} date={ctx.txScheduleDate} />
+            <Calendar
+              isActive={isActive}
+              date={ctx.txScheduleDate}
+              disabled={ctx.disabled}
+            />
           }
         />
       )}

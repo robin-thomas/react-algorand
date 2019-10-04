@@ -10,7 +10,7 @@ const Transfer = props => (
   <div>
     <DataConsumer>
       {ctx =>
-        ctx.txUrl ? (
+        ctx.tx ? (
           <TransferAnother />
         ) : (
           <div>

@@ -11,8 +11,6 @@ const Input = props => {
     setText(text);
 
     if (props.onChange) {
-      // const color = getCurrentColor();
-
       const { validate } = props.onChange(text);
 
       if (validate === undefined) {

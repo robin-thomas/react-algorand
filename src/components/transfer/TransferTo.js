@@ -41,19 +41,22 @@ const TransferTo = props => {
   const transfer = async e => {
     ctx.setDisabled(true);
 
-    let txId = await Algorand.createTransaction(ctx, {
-      to: ctx.validation.toAddressValue,
-      amount: ctx.validation.amountValue
-    });
+    try {
+      let tx = await Algorand.createTransaction(ctx, {
+        to: ctx.validation.toAddressValue,
+        amount: ctx.validation.amountValue
+      });
+      ctx.setTx(tx);
 
-    const url = config.algorand.explorer[ctx.network].replace("{txId}", txId);
-    ctx.setTxUrl(url);
+      // Reset validation object.
+      ctx.setValidation({
+        amount: false,
+        toAddress: false
+      });
+    } catch (err) {
+      alert(err.message);
+    }
 
-    // Reset validation object.
-    ctx.setValidation({
-      amount: false,
-      toAddress: false
-    });
     ctx.setDisabled(false);
   };
 
@@ -123,7 +126,11 @@ const TransferTo = props => {
                   !ctx.validation.toAddress
                 }
               >
-                Transfer Now
+                {ctx.disabled ? (
+                  <i className="fas fa-spinner fa-spin"></i>
+                ) : (
+                  "Transfer Now"
+                )}
               </MDBBtn>
             )}
           </DataConsumer>
