@@ -37,6 +37,7 @@ const ScheduleDate = () => {
             ctx.setTxScheduleDate(date);
             setIsActive(true);
           }}
+          minDate={new Date()}
           onClickOutside={() => setIsActive(false)}
           customInput={
             <Calendar isActive={isActive} date={ctx.txScheduleDate} />
