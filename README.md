@@ -38,6 +38,7 @@ export default App;
 
 # Features
 
+- Zero configuration required.
 - Login using Algorand wallet (wallet file is simply a text file containing the mnemonic).
 - Create a new Algorand account and the wallet file will be downloaded automatically.
 - Send payment transaction to another Algorand account.
