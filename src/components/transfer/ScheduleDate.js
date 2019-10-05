@@ -8,23 +8,25 @@ import "react-datepicker/dist/react-datepicker.min.css";
 
 import "./ScheduleDate.css";
 
-const Calendar = forwardRef(({ isActive, date, disabled, onClick }, ref) => (
-  <div ref={ref} className="custom-control custom-switch" onClick={onClick}>
-    <input
-      type="checkbox"
-      className="custom-control-input"
-      checked={isActive}
-      onChange={() => console.log("")}
-      disabled={disabled}
-    />
-    <label
-      className="algorand-transferto-schedule-label custom-control-label"
-      htmlFor="customSwitches"
-    >
-      <p>{isActive ? date.toLocaleString() : "Schedule this transaction"}</p>
-    </label>
-  </div>
-));
+const Calendar = forwardRef(
+  ({ ctx, isActive, date, disabled, onClick }, ref) => (
+    <div ref={ref} className="custom-control custom-switch" onClick={onClick}>
+      <input
+        type="checkbox"
+        className="custom-control-input"
+        checked={isActive}
+        onChange={() => ctx.setTxScheduleDate(new Date())}
+        disabled={disabled}
+      />
+      <label
+        className="algorand-transferto-schedule-label custom-control-label"
+        htmlFor="customSwitches"
+      >
+        <p>{isActive ? date.toLocaleString() : "Schedule this transaction"}</p>
+      </label>
+    </div>
+  )
+);
 
 const ScheduleDate = () => {
   const [isActive, setIsActive] = useState(false);
@@ -45,6 +47,7 @@ const ScheduleDate = () => {
           onClickOutside={() => setIsActive(false)}
           customInput={
             <Calendar
+              ctx={ctx}
               isActive={isActive}
               date={ctx.txScheduleDate}
               disabled={ctx.disabled}
