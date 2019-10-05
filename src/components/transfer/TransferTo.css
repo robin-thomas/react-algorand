@@ -6,12 +6,19 @@
 p.algorand-transferto-balance-p {
   font-size: 1rem;
   margin-bottom: 0px;
-  margin-top: 1em;
+  margin-top: 10px;
   font-weight: 400;
+  word-break: break-word;
+}
+
+p.algorand-transferto-balance-p > span {
+  font-size: 11px !important;
+  display: inline-block;
+  font-weight: 300 !important;
 }
 
 form.algorand-transferto-form .md-form {
-  margin-top: 12px;
+  margin-top: 0px;
 }
 
 .algorand-transferto-select .form-control {

@@ -30,12 +30,17 @@ module.exports = {
         }
       },
       {
-        test: /\.(woff(2)?|ttf|eot)(\?[a-z0-9=.]+)?$/,
+        test: /\.(woff(2)?)(\?[a-z0-9=.]+)?$/,
         loader: "url-loader",
         options: {
           outputPath: "fonts",
           name: "[name].[ext]"
         }
+      },
+      {
+        // Ignore fonts
+        test: /\.(eot|ttf)(\?.*$|$)/,
+        use: ["raw-loader", "ignore-loader"]
       }
     ]
   },

@@ -59,7 +59,7 @@ const Algorand = {
     return await Algorand.getClient(ctx).accountInformation(address);
   },
 
-  createTransaction: async (ctx, { to, amount }) => {
+  createTransaction: async (ctx, { to, amount, memo }) => {
     let tx = await Algorand.getClient(ctx).getTransactionParams();
     tx.to = to;
     tx.amount = Number(amount) * Math.pow(10, 6); // convert to micro-algos.
@@ -78,6 +78,10 @@ const Algorand = {
     } else {
       tx.firstRound = lastRound;
       tx.lastRound = lastRound + parseInt(1000);
+    }
+
+    if (memo !== undefined) {
+      tx.note = algosdk.encodeObj(memo);
     }
 
     return tx;

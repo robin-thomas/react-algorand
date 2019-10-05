@@ -38,14 +38,29 @@ const TransferTo = props => {
     return { validate };
   };
 
+  const onChangeMemo = memo => {
+    ctx.setMemo(memo);
+    return {};
+  };
+
   const transfer = async e => {
     ctx.setDisabled(true);
 
     try {
-      let tx = await Algorand.createTransaction(ctx, {
+      // Set the tx params.
+      let params = {
         to: ctx.validation.toAddressValue,
         amount: ctx.validation.amountValue
-      });
+      };
+      if (
+        ctx.memo !== null &&
+        ctx.memo !== undefined &&
+        ctx.memo.trim().length > 0
+      ) {
+        params.memo = ctx.memo;
+      }
+
+      let tx = await Algorand.createTransaction(ctx, params);
       ctx.setTx(tx);
 
       // Reset validation object.
@@ -66,12 +81,17 @@ const TransferTo = props => {
         <Col className="align-self-center">
           <DataConsumer>
             {ctx => (
-              <p className="algorand-transferto-balance-p">
-                Balance:{" "}
-                {ctx.account ? ctx.account.amount / Math.pow(10, 6) : "0.00"}
-                &nbsp;
-                <img src={Logo} alt="Logo" width="12px" height="12px" />
-              </p>
+              <div>
+                <p className="algorand-transferto-balance-p">
+                  Address: <span>{ctx.wallet ? ctx.wallet.address : null}</span>
+                </p>
+                <p className="algorand-transferto-balance-p">
+                  Balance:{" "}
+                  {ctx.account ? ctx.account.amount / Math.pow(10, 6) : "0.00"}
+                  &nbsp;
+                  <img src={Logo} alt="Logo" width="12px" height="12px" />
+                </p>
+              </div>
             )}
           </DataConsumer>
         </Col>
@@ -108,6 +128,11 @@ const TransferTo = props => {
             <Input
               label="To Address:"
               onChange={onChangeAddress}
+              cls="algorand-transferto-input"
+            />
+            <Input
+              label="Memo:"
+              onChange={onChangeMemo}
               cls="algorand-transferto-input"
             />
           </form>

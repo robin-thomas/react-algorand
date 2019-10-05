@@ -15,6 +15,7 @@ const DataProvider = props => {
   });
   const [tx, setTx] = useState(null);
   const [txScheduleDate, setTxScheduleDate] = useState(new Date());
+  const [memo, setMemo] = useState(null);
 
   return (
     <DataContext.Provider
@@ -36,7 +37,9 @@ const DataProvider = props => {
         tx,
         setTx,
         txScheduleDate,
-        setTxScheduleDate
+        setTxScheduleDate,
+        memo,
+        setMemo
       }}
     >
       {props.children}

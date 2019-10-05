@@ -21,6 +21,9 @@ const Content = ({ header, children }) => {
       amount: false,
       toAddress: false
     });
+    ctx.setTx(null);
+    ctx.setTxScheduleDate(new Date());
+    ctx.setMemo(null);
   };
 
   const logout = ctx => {
