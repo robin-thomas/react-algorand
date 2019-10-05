@@ -11,7 +11,7 @@ p.algorand-transferto-balance-p {
   word-break: break-word;
 }
 
-p.algorand-transferto-balance-p > span {
+p.algorand-transferto-balance-p > span:not(.algorand-transferto-history) {
   font-size: 11px !important;
   display: inline-block;
   font-weight: 300 !important;
@@ -39,4 +39,20 @@ form.algorand-transferto-form .md-form {
   margin-top: 3px;
   font-size: 14px !important;
   cursor: pointer;
+}
+
+.algorand-transferto-history {
+  margin-top: 5px;
+  cursor: pointer;
+  text-decoration: underline;
+  font-weight: 500 !important;
+  font-size: 11px !important;
+  display: inline-block;
+}
+
+.algorand-transferto-history-mock {
+  margin-top: 5px;
+  font-weight: 500 !important;
+  font-size: 11px !important;
+  display: inline-block;
 }

@@ -83,7 +83,23 @@ const TransferTo = props => {
             {ctx => (
               <div>
                 <p className="algorand-transferto-balance-p">
-                  Address: <span>{ctx.wallet ? ctx.wallet.address : null}</span>
+                  Address:
+                  <span style={{ float: "right" }}>
+                    <span className="algorand-transferto-history-mock">
+                      [&nbsp;
+                    </span>
+                    <span
+                      title="See all transactions made in this session"
+                      className="algorand-transferto-history"
+                      onClick={() => ctx.setPage("history")}
+                    >
+                      View History
+                    </span>
+                    <span className="algorand-transferto-history-mock">
+                      &nbsp;]
+                    </span>
+                  </span>
+                  <span>{ctx.wallet ? ctx.wallet.address : null}</span>
                 </p>
                 <p className="algorand-transferto-balance-p">
                   Balance:{" "}

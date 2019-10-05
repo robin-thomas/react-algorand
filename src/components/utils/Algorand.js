@@ -3,6 +3,12 @@ import * as algosdk from "algosdk";
 import * as config from "../../config.json";
 
 const Algorand = {
+  status: {
+    PENDING: 0,
+    SUCCESS: 1,
+    FAILED: 2
+  },
+
   isValidAddress: address => {
     return algosdk.isValidAddress(address);
   },

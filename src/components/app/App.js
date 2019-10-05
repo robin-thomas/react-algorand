@@ -16,10 +16,10 @@ const App = ({ colorClass }) => {
       "--algorand-color",
       `var(--algorand-color-${colorClass})`
     );
-  }, [colorClass]);
+  }, [ctx.setColorClass, colorClass]);
 
   return (
-    <Container className="algorand-container">
+    <Container fluid={true} className="algorand-container">
       {getComponent(ctx.page)}
     </Container>
   );

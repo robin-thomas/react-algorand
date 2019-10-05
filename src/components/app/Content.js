@@ -56,9 +56,7 @@ const Content = ({ header, children }) => {
           </DataConsumer>
         </Col>
       </Row>
-      <Container>
-        <Row className="algorand-content-footer">{children}</Row>
-      </Container>
+      <div className="algorand-content-footer">{children}</div>
     </Container>
   );
 };

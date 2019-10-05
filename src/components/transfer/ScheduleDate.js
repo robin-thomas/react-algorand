@@ -21,6 +21,7 @@ const Calendar = forwardRef(
       <label
         className="algorand-transferto-schedule-label custom-control-label"
         htmlFor="customSwitches"
+        title="Schedule this transaction for future"
       >
         <p>{isActive ? date.toLocaleString() : "Schedule this transaction"}</p>
       </label>

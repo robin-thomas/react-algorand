@@ -1,0 +1,26 @@
+.algorand-history-header > .col > span {
+  font-size: 16px;
+  text-transform: uppercase;
+  display: inline-block;
+  margin-top: 10px;
+}
+
+.algorand-history-row {
+  line-height: 1em !important;
+}
+
+.algorand-history-row span {
+  font-size: 14px;
+}
+
+.algorand-history-row a {
+  text-decoration: underline;
+  font-size: 14px;
+  color: black;
+}
+
+.algorand-history-row a:hover {
+  text-decoration: underline;
+  font-size: 14px;
+  color: black;
+}
