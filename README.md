@@ -1,6 +1,8 @@
 # React-Algorand
 
-![](https://img.shields.io/badge/nodejs-12.4-blue.svg) [![License](https://img.shields.io/badge/license-MIT-green.svg)](https://opensource.org/licenses/MIT)
+[![NPM](https://img.shields.io/npm/v/react-algorand.svg)](https://www.npmjs.com/package/react-algorand)
+![](https://img.shields.io/badge/nodejs-12.4-blue.svg)
+[![License](https://img.shields.io/badge/license-MIT-green.svg)](https://opensource.org/licenses/MIT)
 
 # Demo link
 
