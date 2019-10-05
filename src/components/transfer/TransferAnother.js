@@ -38,6 +38,7 @@ const Transfer = () => {
   const onClick = ctx => {
     setUrl(null);
     ctx.setTx(null);
+    ctx.setTxScheduleDate(new Date());
   };
 
   return (
