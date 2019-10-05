@@ -44,7 +44,7 @@ export default App;
 - Send payment transaction to another Algorand account.
 - See the account balance & address before making the transaction.
 - Add a memo (or note) to your transaction (optional field).
-- Schedule your transaction to be processed in the future.
+- Can schedule your transaction to be processed in the future.
 - It will wait until the transaction is mined and then link to Algorand explorer.
 - Support different Algorand networks - `mainnet`, and `testnet`.
 - Choose between different themes - `danger`, `primary`, `dark`, `warning`, `success`, `secondary`, `info`.
