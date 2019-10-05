@@ -13,10 +13,10 @@ const DataProvider = props => {
     amount: false,
     toAddress: false
   });
-  const [tx, setTx] = useState(null);
-  const [txScheduleDate, setTxScheduleDate] = useState(new Date());
+  const [txDate, setTxDate] = useState(null);
   const [memo, setMemo] = useState(null);
-  const [txns, setTxns] = useState({});
+  const [txs, setTxs] = useState({});
+  const [worker, setWorker] = useState(null);
 
   return (
     <DataContext.Provider
@@ -35,14 +35,14 @@ const DataProvider = props => {
         setNetwork,
         validation,
         setValidation,
-        tx,
-        setTx,
-        txScheduleDate,
-        setTxScheduleDate,
+        txDate,
+        setTxDate,
         memo,
         setMemo,
-        txns,
-        setTxns
+        txs,
+        setTxs,
+        worker,
+        setWorker
       }}
     >
       {props.children}

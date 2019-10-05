@@ -19,7 +19,7 @@ const TransferTo = props => {
   const ctx = useContext(DataContext);
 
   useEffect(() => {
-    Algorand.getAccount(ctx, ctx.wallet.address).then(ctx.setAccount);
+    Algorand.getAccount(ctx.network, ctx.wallet.address).then(ctx.setAccount);
   }, [ctx.network]);
 
   const onChangeAddress = address => {
@@ -35,6 +35,7 @@ const TransferTo = props => {
     ctx.setValidation(validation => {
       return { ...validation, toAddress: validate, toAddressValue: address };
     });
+
     return { validate };
   };
 
@@ -48,26 +49,36 @@ const TransferTo = props => {
 
     try {
       // Set the tx params.
-      let params = {
+      let txParams = {
         to: ctx.validation.toAddressValue,
-        amount: ctx.validation.amountValue
+        amount: ctx.validation.amountValue,
+        date: ctx.txDate ? ctx.txDate : new Date()
       };
+
       if (
         ctx.memo !== null &&
         ctx.memo !== undefined &&
         ctx.memo.trim().length > 0
       ) {
-        params.memo = ctx.memo;
+        txParams.memo = ctx.memo;
       }
 
-      let tx = await Algorand.createTransaction(ctx, params);
-      ctx.setTx(tx);
+      console.log(txParams);
+
+      // Send the transaction to the worker, be processed.
+      ctx.worker.postMessage({
+        network: ctx.network,
+        txParams: txParams,
+        secretKey: ctx.wallet.sk
+      });
 
       // Reset validation object.
       ctx.setValidation({
         amount: false,
         toAddress: false
       });
+
+      ctx.setPage("history");
     } catch (err) {
       alert(err.message);
     }

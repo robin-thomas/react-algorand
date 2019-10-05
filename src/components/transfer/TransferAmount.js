@@ -22,9 +22,11 @@ const TransferAmount = props => {
       Number(amount) > 0 &&
       (ctx.account &&
         Number(ctx.account.amount) / Math.pow(10, 6) > Number(amount));
+
     ctx.setValidation(validation => {
       return { ...validation, amount: validate, amountValue: amount };
     });
+
     return { validate };
   };
 

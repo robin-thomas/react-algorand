@@ -1,10 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 
 import { MDBBtn } from "mdbreact";
 import { Row, Col } from "react-bootstrap";
 
 import Content from "../app/Content";
-import { DataConsumer } from "../utils/DataProvider";
+import { DataContext } from "../utils/DataProvider";
 import EmptyRow from "../utils/EmptyRow";
 
 import Algorand from "../utils/Algorand";
@@ -12,7 +12,9 @@ import Algorand from "../utils/Algorand";
 import "./Login.css";
 
 const Home = props => {
-  const login = ctx => {
+  const ctx = useContext(DataContext);
+
+  const login = () => {
     const file = document.createElement("input");
     file.style.display = "none";
     file.type = "file";
@@ -29,7 +31,7 @@ const Home = props => {
           const wallet = Algorand.getWallet(evt.target.result);
           ctx.setWallet(wallet);
           ctx.setPage("transfer");
-          Algorand.getAccount(ctx, wallet.address).then(ctx.setAccount);
+          Algorand.getAccount(ctx.network, wallet.address).then(ctx.setAccount);
 
           document.getElementById("root").removeChild(file);
         } catch (err) {
@@ -41,7 +43,7 @@ const Home = props => {
     file.click();
   };
 
-  const createWallet = ctx => {
+  const createWallet = () => {
     const wallet = Algorand.createWallet();
 
     const ele = document.createElement("a");
@@ -67,30 +69,19 @@ const Home = props => {
           <EmptyRow />
           <Row>
             <Col className="text-center">
-              <DataConsumer>
-                {ctx =>
-                  ctx.wallet === null ? (
-                    <MDBBtn
-                      color={ctx.colorClass}
-                      onClick={() => createWallet(ctx)}
-                    >
-                      Create
-                    </MDBBtn>
-                  ) : null
-                }
-              </DataConsumer>
+              {ctx.wallet === null ? (
+                <MDBBtn color={ctx.colorClass} onClick={createWallet}>
+                  Create
+                </MDBBtn>
+              ) : null}
             </Col>
           </Row>
           <Row>
             <Col>
               <p className="login-signup-prompt">
-                <DataConsumer>
-                  {ctx =>
-                    ctx.wallet === null
-                      ? "Do not have an wallet? Create one now!"
-                      : "Your wallet has been downloaded! Upload it to login"
-                  }
-                </DataConsumer>
+                {ctx.wallet === null
+                  ? "Do not have an wallet? Create one now!"
+                  : "Your wallet has been downloaded! Upload it to login"}
               </p>
             </Col>
           </Row>
@@ -98,13 +89,9 @@ const Home = props => {
       </Content>
       <Row>
         <Col className="text-center">
-          <DataConsumer>
-            {ctx => (
-              <MDBBtn color={ctx.colorClass} onClick={() => login(ctx)}>
-                Login
-              </MDBBtn>
-            )}
-          </DataConsumer>
+          <MDBBtn color={ctx.colorClass} onClick={login}>
+            Login
+          </MDBBtn>
         </Col>
       </Row>
     </div>

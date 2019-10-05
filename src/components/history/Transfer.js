@@ -9,6 +9,7 @@ const Transfer = props => {
   const onClick = ctx => {
     ctx.setDisabled(false);
     ctx.setPage("transfer");
+    ctx.setTxDate(new Date());
   };
 
   return (

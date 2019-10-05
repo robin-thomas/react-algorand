@@ -43,10 +43,13 @@ export default App;
 - Zero configuration required.
 - Login using Algorand wallet (wallet file is simply a text file containing the mnemonic).
 - Create a new Algorand account and the wallet file will be downloaded automatically.
-- Send payment transaction to another Algorand account.
 - See the account balance & address before making the transaction.
 - Add a memo (or note) to your transaction (optional field).
+- Send payment transaction to another Algorand account.
 - Can schedule your transaction to be processed in the future.
-- It will wait until the transaction is mined and then link to Algorand explorer.
+- Can make multiple transactions in one user session.
+- See the history of all transactions made in one user session.
+- Pending transactions will show the remaining time for the transaction to be processed.
+- If the user closes his/her browser, all pending transactions will be cancelled.
 - Support different Algorand networks - `mainnet`, and `testnet`.
 - Choose between different themes - `danger`, `primary`, `dark`, `warning`, `success`, `secondary`, `info`.

@@ -1,14 +1,30 @@
 const path = require("path");
 
 module.exports = {
-  entry: "./src/index.js",
+  entry: ["@babel/polyfill", "./src/index.js"],
   output: {
     path: path.resolve(__dirname, "build"),
     filename: "index.js",
-    libraryTarget: "commonjs2"
+    libraryTarget: "commonjs2",
+    globalObject: "typeof self !== 'undefined' ? self : this"
   },
   module: {
     rules: [
+      {
+        test: /\.worker\.js$/,
+        use: [
+          {
+            loader: "worker-loader",
+            options: {
+              inline: true
+            }
+          },
+          {
+            loader: "babel-loader"
+          }
+        ],
+        include: path.resolve(__dirname, "src/components")
+      },
       {
         test: /\.js$/,
         include: path.resolve(__dirname, "src"),

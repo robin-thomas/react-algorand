@@ -1,56 +1,54 @@
-import React from "react";
+import React, { useContext } from "react";
 
 import { Row, Col, OverlayTrigger, Tooltip } from "react-bootstrap";
 
 import Algorand from "../utils/Algorand";
-import { DataConsumer } from "../utils/DataProvider";
+import { DataContext } from "../utils/DataProvider";
 import Timer from "../utils/Timer";
 
 import * as config from "../../config.json";
 
-const Detail = ({ txn }) => {
+const Detail = ({ tx }) => {
+  const ctx = useContext(DataContext);
+
   return (
     <Row className="algorand-history-header algorand-history-row">
       <Col md="auto">
-        <DataConsumer>
-          {ctx =>
-            txn.status !== Algorand.status.PENDING ? (
-              <div>
-                <span>#&nbsp;</span>
-                <a
-                  target="_blank"
-                  href={config.algorand.explorer[ctx.network].replace(
-                    "{txId}",
-                    txn.id
-                  )}
-                  title={config.algorand.explorer[ctx.network].replace(
-                    "{txId}",
-                    txn.id
-                  )}
-                  rel="noopener noreferrer"
-                >
-                  {txn.id.substr(0, 15)}...
-                </a>
-              </div>
-            ) : (
-              <span>{`# ${txn.id.substr(0, 15)}...`}</span>
-            )
-          }
-        </DataConsumer>
+        {tx.status !== Algorand.status.PENDING ? (
+          <div>
+            <span>#&nbsp;</span>
+            <a
+              target="_blank"
+              href={config.algorand.explorer[ctx.network].replace(
+                "{txId}",
+                tx.txId
+              )}
+              title={config.algorand.explorer[ctx.network].replace(
+                "{txId}",
+                tx.txId
+              )}
+              rel="noopener noreferrer"
+            >
+              {tx.txId.substr(0, 11)}...
+            </a>
+          </div>
+        ) : (
+          <span>{`# ${tx.txId.substr(0, 11)}...`}</span>
+        )}
       </Col>
       <Col md="auto" className="ml-auto pl-0">
         <OverlayTrigger
           placement="right"
           overlay={
             <Tooltip>
-              <Timer date={txn.date} />
+              <Timer date={tx.date} />
             </Tooltip>
           }
         >
           <span>
-            {txn.status === Algorand.status.PENDING ? (
+            {tx.status === Algorand.status.PENDING ? (
               <i className="fas fa-spinner fa-spin"></i>
-            ) : txn.status === Algorand.status.SUCCESS ? (
+            ) : tx.status === Algorand.status.SUCCESS ? (
               <i className="fas fa-check"></i>
             ) : (
               <i className="fas fa-times"></i>

@@ -15,7 +15,7 @@ const Calendar = forwardRef(
         type="checkbox"
         className="custom-control-input"
         checked={isActive}
-        onChange={() => ctx.setTxScheduleDate(new Date())}
+        onChange={() => ctx.setTxDate(new Date())}
         disabled={disabled}
       />
       <label
@@ -39,21 +39,21 @@ const ScheduleDate = () => {
           withPortal
           timeInputLabel="Time:"
           showTimeInput
-          selected={ctx.txScheduleDate}
+          selected={ctx.txDate ? ctx.txDate : new Date()}
           onChange={date => {
-            ctx.setTxScheduleDate(date);
+            ctx.setTxDate(date);
             setIsActive(true);
           }}
           minDate={new Date()}
           onClickOutside={() => {
             setIsActive(false);
-            ctx.setTxScheduleDate(new Date());
+            ctx.setTxDate(new Date());
           }}
           customInput={
             <Calendar
               ctx={ctx}
               isActive={isActive}
-              date={ctx.txScheduleDate}
+              date={ctx.txDate ? ctx.txDate : new Date()}
               disabled={ctx.disabled}
             />
           }
