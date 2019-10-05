@@ -43,7 +43,7 @@ export default App;
 - Create a new Algorand account and the wallet file will be downloaded automatically.
 - Send payment transaction to another Algorand account.
 - See the account balance & address before making the transaction.
-- Add a memo (or note) to your transaction.
+- Add a memo (or note) to your transaction (optional field).
 - Schedule your transaction to be processed in the future.
 - It will wait until the transaction is mined and then link to Algorand explorer.
 - Support different Algorand networks - `mainnet`, and `testnet`.
