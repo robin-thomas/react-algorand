@@ -20,7 +20,8 @@ const TransferAmount = props => {
     const validate =
       !isNaN(amount) &&
       Number(amount) > 0 &&
-      Number(ctx.account.amount) / Math.pow(10, 6) > Number(amount);
+      (ctx.account &&
+        Number(ctx.account.amount) / Math.pow(10, 6) > Number(amount));
     ctx.setValidation(validation => {
       return { ...validation, amount: validate, amountValue: amount };
     });

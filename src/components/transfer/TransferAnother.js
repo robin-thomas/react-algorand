@@ -5,6 +5,7 @@ import { Row, Col, Spinner } from "react-bootstrap";
 
 import Content from "../app/Content";
 
+import Timer from "../utils/Timer";
 import Algorand from "../utils/Algorand";
 import { DataConsumer, DataContext } from "../utils/DataProvider";
 
@@ -60,7 +61,11 @@ const Transfer = () => {
                 />
               )}
             </Col>
-            <Col xs="12" md="12" className="align-self-center px-0">
+            <Col
+              xs="12"
+              md="12"
+              className="algorand-transferanother-col align-self-center px-0"
+            >
               {url ? (
                 <a
                   className="algorand-transferanother-url"
@@ -71,7 +76,13 @@ const Transfer = () => {
                   {`${url.substr(0, 50)}...`}
                 </a>
               ) : (
-                "Please dont close your browser"
+                <div>
+                  <p className="algorand-transferanother-waiting">
+                    <b>Avg waiting time: </b>
+                  </p>
+                  <Timer date={ctx.txScheduleDate} />
+                  <p>Please dont close your browser</p>
+                </div>
               )}
             </Col>
           </Content>

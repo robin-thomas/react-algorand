@@ -6,6 +6,8 @@ import { DataConsumer } from "../utils/DataProvider";
 
 import "react-datepicker/dist/react-datepicker.min.css";
 
+import "./ScheduleDate.css";
+
 const Calendar = forwardRef(({ isActive, date, disabled, onClick }, ref) => (
   <div ref={ref} className="custom-control custom-switch" onClick={onClick}>
     <input
@@ -32,6 +34,7 @@ const ScheduleDate = () => {
       {ctx => (
         <DatePicker
           withPortal
+          timeInputLabel="Time:"
           showTimeInput
           selected={ctx.txScheduleDate}
           onChange={date => {
