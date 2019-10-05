@@ -21,6 +21,15 @@ const Transfer = () => {
   useEffect(() => {
     const checkTxStatus = async () => {
       try {
+        ctx.setTxns(txns => {
+          txns[ctx.tx.id] = {
+            id: ctx.tx.id,
+            date: ctx.txScheduleDate,
+            status: Algorand.status.PENDING
+          };
+          return txns;
+        });
+
         const txId = await Algorand.sendTransaction(ctx, ctx.tx);
         const url = config.algorand.explorer[ctx.network].replace(
           "{txId}",

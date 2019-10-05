@@ -24,6 +24,7 @@ const Content = ({ header, children }) => {
     ctx.setTx(null);
     ctx.setTxScheduleDate(new Date());
     ctx.setMemo(null);
+    ctx.setTxns({});
   };
 
   const logout = ctx => {

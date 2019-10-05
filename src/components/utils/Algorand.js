@@ -133,6 +133,13 @@ const Algorand = {
       const response = await Algorand.getClient(
         ctx
       ).pendingTransactionInformation(txId);
+
+      // TODO verify txn status is SUCCESS/
+      ctx.setTxns(txns => {
+        txns[txId].status = Algorand.status.PENDING;
+        return txns;
+      });
+
       return response;
     } catch (err) {
       return await Algorand.checkTxStatus(ctx, txId);

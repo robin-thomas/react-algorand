@@ -10,23 +10,23 @@ import EmptyRow from "../utils/EmptyRow";
 import "./Details.css";
 
 const Details = props => {
-  const txns = [
-    {
+  const txns = {
+    "12345678866666666": {
       id: "12345678866666666",
       date: new Date("2019-10-05 17:00:00"),
       status: Algorand.status.PENDING
     },
-    {
+    "12345678866666667": {
       id: "12345678866666666",
       date: new Date(),
       status: Algorand.status.SUCCESS
     },
-    {
+    "12345678866666668": {
       id: "12345678866666666",
       date: new Date(),
       status: Algorand.status.FAILED
     }
-  ];
+  };
 
   return (
     <Content header="History">
@@ -35,8 +35,8 @@ const Details = props => {
           <span>Transactions in this session</span>
         </Col>
       </Row>
-      {txns.map((txn, index) => (
-        <Detail key={index} txn={txn} />
+      {Object.keys(txns).map((key, index) => (
+        <Detail key={index} txn={txns[key]} />
       ))}
       <EmptyRow />
     </Content>
