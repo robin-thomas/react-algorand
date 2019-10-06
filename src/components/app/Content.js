@@ -23,7 +23,7 @@ const Content = ({ header, children }) => {
       amount: false,
       toAddress: false
     });
-    ctx.setTx({});
+    ctx.setTxDate(null);
     ctx.setMemo(null);
     ctx.setTxs({});
   };
