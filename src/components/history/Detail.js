@@ -24,7 +24,7 @@ const Detail = ({ tx }) => (
         <span>{`# ${tx.txId.substr(0, 11)}...`}</span>
       )}
     </Col>
-    <Col md="auto" className="ml-auto pl-0">
+    <Col md="3" className="ml-auto pl-0">
       <OverlayTrigger
         placement="right"
         overlay={
