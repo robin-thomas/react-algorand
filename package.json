@@ -1,6 +1,6 @@
 {
   "name": "react-algorand",
-  "version": "1.0.20",
+  "version": "1.0.21",
   "description": "React components that expose creating, signing and sending payment transaction on Algorand blockchain",
   "main": "build/index.js",
   "scripts": {
