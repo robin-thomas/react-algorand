@@ -28,6 +28,9 @@ const TransferTo = props => {
       address === undefined ||
       address.trim().length === 0
     ) {
+      ctx.setValidation(validation => {
+        return { ...validation, toAddress: false };
+      });
       return {};
     }
 

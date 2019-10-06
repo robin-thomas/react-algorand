@@ -14,6 +14,9 @@ const TransferAmount = props => {
 
   const onChangeAmount = amount => {
     if (amount === null || amount === undefined || amount.trim().length === 0) {
+      ctx.setValidation(validation => {
+        return { ...validation, amount: false };
+      });
       return {};
     }
 
