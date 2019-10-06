@@ -57,7 +57,8 @@ const TransferTo = props => {
       let txParams = {
         to: ctx.validation.toAddressValue,
         amount: ctx.validation.amountValue,
-        date: ctx.txDate ? ctx.txDate : new Date()
+        date: ctx.txDate ? ctx.txDate : new Date(),
+        url: config.algorand.explorer[ctx.network]
       };
 
       if (
