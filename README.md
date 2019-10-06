@@ -49,7 +49,7 @@ export default App;
 - Can schedule your transaction to be processed in the future.
 - Can make multiple transactions in one user session.
 - See the history of all transactions made in one user session.
-- Processed transactions will show the timestamp (when hovered over the spinner) when the transaction was processed.
+- Processed transactions will show the timestamp (when hovered over the tick) when the transaction was processed.
 - Pending transactions will show the remaining time (when hovered over the spinner) for the transaction to be processed.
 - If the user closes his/her browser, all pending transactions will be cancelled.
 - Support different Algorand networks - `mainnet`, and `testnet`.
