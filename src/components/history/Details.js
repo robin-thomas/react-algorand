@@ -1,6 +1,7 @@
 import React from "react";
 
 import { Row, Col } from "react-bootstrap";
+import ScrollArea from "react-scrollbar";
 
 import Detail from "./Detail";
 import Content from "../app/Content";
@@ -18,9 +19,17 @@ const Details = ({ txs }) => (
     </Row>
     {txs && Object.keys(txs).length > 0 ? (
       <div>
-        {Object.keys(txs).map((key, index) => (
-          <Detail key={index} tx={txs[key]} />
-        ))}
+        <ScrollArea
+          speed={0.8}
+          className="react-algorand-scrollarea"
+          smoothScrolling={true}
+          horizontal={false}
+          minScrollSize
+        >
+          {Object.keys(txs).map((key, index) => (
+            <Detail key={index} tx={txs[key]} />
+          ))}
+        </ScrollArea>
         <EmptyRow />
         <p
           style={{

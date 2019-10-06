@@ -1,3 +1,7 @@
+.react-algorand-scrollarea {
+  height: 150px;
+}
+
 .algorand-history-header > .col > span {
   font-size: 16px;
   text-transform: uppercase;

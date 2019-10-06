@@ -13,6 +13,7 @@ const TransferAmount = props => {
   const ctx = useContext(DataContext);
 
   const onChangeAmount = amount => {
+    console.log("amount validation");
     if (amount === null || amount === undefined || amount.trim().length === 0) {
       ctx.setValidation(validation => {
         return { ...validation, amount: false };
@@ -23,8 +24,11 @@ const TransferAmount = props => {
     const validate =
       !isNaN(amount) &&
       Number(amount) > 0 &&
-      (ctx.account &&
-        Number(ctx.account.amount) / Math.pow(10, 6) > Number(amount));
+      (ctx.account
+        ? !isNaN(ctx.account.amount) &&
+          Number(ctx.account.amount) / Math.pow(10, 6) > Number(amount)
+        : true);
+    console.log(validate);
 
     ctx.setValidation(validation => {
       return { ...validation, amount: validate, amountValue: amount };

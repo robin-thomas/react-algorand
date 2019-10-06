@@ -34,7 +34,9 @@ const TransferTo = props => {
       return {};
     }
 
-    const validate = Algorand.isValidAddress(address);
+    const validate =
+      Algorand.isValidAddress(address) &&
+      (ctx.wallet ? ctx.wallet.address !== address : true);
     ctx.setValidation(validation => {
       return { ...validation, toAddress: validate, toAddressValue: address };
     });
