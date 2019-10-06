@@ -5,3 +5,4 @@ test
 .gitignore
 now.json
 webpack.config.js
+.eslintrc.json
